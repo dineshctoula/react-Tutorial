@@ -1,14 +1,14 @@
-import User, { Profile, UserName } from "./User";
 
-function App() {
-  return (
-    <div>
-      <h1>Hey</h1>
-      <User />
-      <Profile />
-     <h1>{UserName}</h1>
-    </div>
-  );
+
+// 
+
+
+
+function App(){
+  // return (
+  //   <h1  className="txt"> Welcome to Dinesh</h1>
+  // )
+  // convert above code wihtout jsx 
+  
 }
-
 export default App;
