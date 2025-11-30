@@ -1,45 +1,30 @@
 import { useState } from "react";
 
+import Bio from "./bio";
+
+
+
+
+
+
+
 function App() {
-
-  const [name, setName] = useState("dinesh sitoula");
-  const [count, setCount] = useState(0);
-
-  
-
-
-  const nameChange = () => {
-    setName("pawan sitoula");
-  };
+  const [show, setShow] = useState(false);
 
   return (
-    <div className="App">
-      <h1>Name: {name}</h1>
-      <h1>Count: {count}</h1>
+    <div>
+      <h1>Dinesh Sitoula</h1>
 
-      <div>
-        {/* increment button */}
-        <button onClick={() => setCount(count + 1)}>
-          Increment
-        </button>
+      <button onClick={() => setShow(!show)}>
+        {show ? "Hide" : "Show"} Details
+      </button>
 
-        {/* decrement button */}
-        <button onClick={() => setCount(count - 1)}>
-          Decrement
-        </button>
-
-        {/* reset button */}
-        <button onClick={() => setCount(0)}>
-          Reset
-        </button>
-
-        {/* name change button */}
-        <button onClick={nameChange}>
-          Name change Button
-        </button>
-
-
-      </div>
+      {/* show details conditionally */}
+      {show && (
+        <p>
+          <Bio />
+        </p>
+      )}
     </div>
   );
 }
