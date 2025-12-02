@@ -1,28 +1,8 @@
-function User() {
+const User=({children})=>{
   return (
     <div>
-      <h1>User</h1>
-      <p>This is user</p>
+<h2>User Name:{children}</h2>
     </div>
   );
-}
-
+};
 export default User;
-
-
-
-export function Profile() {
-  return (
-    <div>
-      <h1>Profile Components</h1>
-      <p>This is profile</p>
-    </div>
-  );
-}
-
-
-
-
-
-
-export const UserName="dinesh";

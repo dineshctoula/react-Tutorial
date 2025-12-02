@@ -1,13 +1,17 @@
 import Hobby from "./Hobby";
+import User from "./User";
+import { useState } from "react";
 
-function App(){
-  let hobbys=["reading","gaming","coding"]
+function App() {
+  const [hobby, setHobby] = useState(true);   // FIX: define hobby state
+
   return (
-    <div className="App">
-      <h1> My React App</h1>
-      <p> This is a simple react application</p>
-      <Hobby hobby={hobbys} />
+    <div>
+      {hobby && <Hobby name={hobby} />}
+
+      <button onClick={()=>setHobby(cricket)}>Display Hobby</button>
     </div>
   );
 }
-export default App; 
+
+export default App;
