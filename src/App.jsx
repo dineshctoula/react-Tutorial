@@ -1,17 +1,20 @@
-import Hobby from "./Hobby";
-import User from "./User";
 import { useState } from "react";
 
-function App() {
-  const [hobby, setHobby] = useState(true);   // FIX: define hobby state
-
+function App(){
+  const [name, setName]=useState("");
+  const HandelChange= (e)=>{
+    setName(e.target.value);
+  }
   return (
     <div>
-      {hobby && <Hobby name={hobby} />}
-
-      <button onClick={()=>setHobby(cricket)}>Display Hobby</button>
+      <h2>Dinesh Coding Example </h2>
+      <input type="text" value={name}
+      onChange={HandelChange}
+      
+      placeholder="Enter your name"/>
+      <button onClick={()=>setName("")}>Clear</button>
+      <p>Live Preview : {name}</p>
     </div>
   );
 }
-
 export default App;
