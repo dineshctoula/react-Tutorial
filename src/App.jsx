@@ -1,19 +1,49 @@
 import { useState } from "react";
 
-function App(){
+function App() {
   const [name, setName]=useState("");
-  const HandelChange= (e)=>{
-    setName(e.target.value);
+
+  // name haru chae state variable ho 
+  //  setname chae function jasle value update garxa 
+
+
+  const[email, setEmail]=useState("");
+  const[password, setPassword]=useState("");
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
+
   }
+  const handleClear =()=>{
+    setName("");
+    setEmail("");
+    setPassword("");
+  }
+
   return (
+    // controlled component
     <div>
-      <h2>Dinesh Coding Example </h2>
-      <input type="text" value={name}
-      onChange={HandelChange}
-      
-      placeholder="Enter your name"/>
-      <button onClick={()=>setName("")}>Clear</button>
-      <p>Live Preview : {name}</p>
+      <h1>Controlled component</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" Value={name} onChange={(e)=>setName(e.target.value)} placeholder="enter your name" />
+        <br />
+        <br />
+
+        <input type="email" Value={email}   onChange={(e)=>setEmail(e.target.value)}  placeholder="enter your email" />
+        {/* mathe state variable lekheko ho value ma  */}
+        <br />
+        <br />
+        <input type="password" Value={password}
+         onChange={(e)=>setPassword(e.target.value)} 
+        placeholder="enter your password" />
+        <br />
+        <br />
+        <button type="submit"> Submit</button>
+        <br />
+        <br />
+        <button type="reset"onClick={handleClear}>Clear</button>
+        <p>live value:{name}:{email}:{password}</p>
+      </form>
     </div>
   );
 }
