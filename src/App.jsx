@@ -1,50 +1,74 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 function App() {
-  const [name, setName]=useState("");
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
-  // name haru chae state variable ho 
-  //  setname chae function jasle value update garxa 
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
+    // Reading values from uncontrolled inputs
+    console.log("Name:", nameRef.current.value);
+    console.log("Email:", emailRef.current.value);
+    console.log("Password:", passwordRef.current.value);
 
-  const[email, setEmail]=useState("");
-  const[password, setPassword]=useState("");
-  const handleSubmit =(e)=>{
-    e.preventDefault();
-    alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
-
-  }
-  const handleClear =()=>{
-    setName("");
-    setEmail("");
-    setPassword("");
+    const name=nameRef.current.value;
+    const email=emailRef.current.value;
+    const password=passwordRef.current.value;
+  };
+  const handleReset =()=>{
+    nameRef.current.value="";
+    emailRef.current.value="";
+    passwordRef.current.value=""
   }
 
   return (
-    // controlled component
-    <div>
-      <h1>Controlled component</h1>
-      <form onSubmit={handleSubmit}>
-        <input type="text" Value={name} onChange={(e)=>setName(e.target.value)} placeholder="enter your name" />
-        <br />
-        <br />
+    <div className="App">
+      <h1>Dinesh Uncontrolled Components</h1>
 
-        <input type="email" Value={email}   onChange={(e)=>setEmail(e.target.value)}  placeholder="enter your email" />
-        {/* mathe state variable lekheko ho value ma  */}
-        <br />
-        <br />
-        <input type="password" Value={password}
-         onChange={(e)=>setPassword(e.target.value)} 
-        placeholder="enter your password" />
-        <br />
-        <br />
-        <button type="submit"> Submit</button>
-        <br />
-        <br />
-        <button type="reset"onClick={handleClear}>Clear</button>
-        <p>live value:{name}:{email}:{password}</p>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          ref={nameRef}
+          placeholder="Enter your name"
+        />
+        <br /><br />
+
+        <input
+          type="email"
+          ref={emailRef}
+          placeholder="Enter your email"
+        />
+        <br /><br />
+
+        <input
+          type="password"
+          ref={passwordRef}
+          placeholder="Enter your password"
+        />
+        <br /><br />
+
+        <button type="submit">Submit</button>
+
+        <br /><br />
+        <button type="reset" onClick={handleReset}>Reset</button>
       </form>
     </div>
   );
 }
+
 export default App;
+
+
+// ref is used for uncontrolled components. It helps Dom to access the elements directly 
+
+
+// const nameRef= ley chae input field ma point garxa 
+
+
+
+// event.preventDefault( ) ley chae page lai refresh huna bata stop garxa 
+
+
+// ref ko through bata chae value access hunxah
