@@ -1,74 +1,74 @@
-import { useRef } from "react";
+import { useState } from "react";
 
-function App() {
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+function App(){
+  const [selected, setSelected] = useState({
+    html:false,
+    css:false,
+    js:false,
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Reading values from uncontrolled inputs
-    console.log("Name:", nameRef.current.value);
-    console.log("Email:", emailRef.current.value);
-    console.log("Password:", passwordRef.current.value);
-
-    const name=nameRef.current.value;
-    const email=emailRef.current.value;
-    const password=passwordRef.current.value;
+  const htmlChecked = (e) => {
+    setSelected({...selected, html: e.target.checked});
   };
-  const handleReset =()=>{
-    nameRef.current.value="";
-    emailRef.current.value="";
-    passwordRef.current.value=""
-  }
+
+  const cssChecked = (e) => {
+    setSelected({...selected, css: e.target.checked});
+  };
+
+  const jsChecked = (e) => {
+    setSelected({...selected, js: e.target.checked});
+  };
 
   return (
-    <div className="App">
-      <h1>Dinesh Uncontrolled Components</h1>
+    <div>
+      <h1>Dinesh Checkbox</h1>
 
-      <form onSubmit={handleSubmit}>
+      <label>
         <input
-          type="text"
-          ref={nameRef}
-          placeholder="Enter your name"
+          type="checkbox"
+          checked={selected.html}
+          onChange={htmlChecked}
         />
-        <br /><br />
+        HTML
+      </label>
 
+      <br /><br />
+
+      <label>
         <input
-          type="email"
-          ref={emailRef}
-          placeholder="Enter your email"
+          type="checkbox"
+          checked={selected.css}
+          onChange={cssChecked}
         />
-        <br /><br />
+        CSS
+      </label>
 
+      <br /><br />
+
+      <label>
         <input
-          type="password"
-          ref={passwordRef}
-          placeholder="Enter your password"
+          type="checkbox"
+          checked={selected.js}
+          onChange={jsChecked}
         />
-        <br /><br />
+        JS
+      </label>
 
-        <button type="submit">Submit</button>
+      <br /><br />
 
-        <br /><br />
-        <button type="reset" onClick={handleReset}>Reset</button>
-      </form>
+      <button onClick={() => setSelected({ html:false, css:false, js:false })}>
+        Clear Selection
+      </button>
+
+      <h2>Selected Skills:</h2>
+
+      <ul>
+        {selected.html && <li>HTML</li>}
+        {selected.css && <li>CSS</li>}
+        {selected.js && <li>JS</li>}
+      </ul>
     </div>
   );
 }
 
 export default App;
-
-
-// ref is used for uncontrolled components. It helps Dom to access the elements directly 
-
-
-// const nameRef= ley chae input field ma point garxa 
-
-
-
-// event.preventDefault( ) ley chae page lai refresh huna bata stop garxa 
-
-
-// ref ko through bata chae value access hunxah
