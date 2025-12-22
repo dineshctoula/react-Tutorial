@@ -1,8 +1,8 @@
-const User=({children})=>{
+function User({key,item}){
   return (
     <div>
-<h2>User Name:{children}</h2>
+     <li key={key}> {item}</li>
     </div>
   );
-};
+}
 export default User;
