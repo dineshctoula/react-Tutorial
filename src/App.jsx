@@ -1,21 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-function App() {
-  useEffect(() => {
-    console.log("hello world");
+function App(){
+  const[count, setCount]=useState(0);
+  const[data, setData]=useState(0);
+  useEffect (()=>{
+    setCount(count+1);
+    setData(data+1);
 
-    // cleanup function
-    return () => {
-      console.log("goodbye world");
-    };
-  }, []); // empty dependency array
+  }
+  ,[]
+);
+
+
+useEffect (()=>{
+
+
+  }
+  ,[count,data]
+);
+
+
+
+
 
   return (
-    <div>
-      <h1>Welcome to React</h1>
-      <p>Learn React</p>
+    <div >
+      <h1> Count :{count}</h1>
+      <h1>Data: {data}</h1>
+     <button onClick={()=>setCount(count+1)}> Increment Count</button>
+
+      <button onClick={()=>setData(data+1)}> Increment Data</button>
     </div>
   );
 }
-
 export default App;
