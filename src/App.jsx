@@ -1,11 +1,12 @@
-import './App.css';
+import style from './App.module.css';
 function App(){
   return (
-    <div className='QuoteCard'>
-     <p className='QuoteTag'>Education is the most powerful weapon that you can use to change world. </p>
-    <p className='QuoteAuthor'> - Steve Jobs</p>
+    <div className={style.quoteCard}>
+      <p className={style.quoteTag}>Education is the most powerful that you can use to change the world</p>
+      <p className={style.quoteAuthor}>- Nelson Mandela</p>
+
     </div>
   );
+  
 }
 export default App;
-
