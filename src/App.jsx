@@ -1,44 +1,16 @@
-import { useState } from "react";
-import styled from "styled-components";
-
-// Container for the quote
-const Quote = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  /* fixed typo */
-  height: 100vh;
-  background-color: maroon; /* fixed typo */
-`;
-
-// The main quote text
-const QuoteCard = styled.p`
-  font-size: 2em;
-  color: pink;
-  text-align: center;
-  margin: 0;
-  padding: 20px;
-  font-style: italic;
-`;
-
-// The author text
-const QuotesAuthor = styled.p`
-  font-size: 1.5em;
-  color: ${(props) => props.color};  // dynamic color from state
-  font-weight: bold;  /* fixed CSS property */
-  margin-top: 20px;
-`;
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert'; // Correct import
 
 function App() {
-  const [color, setColor] = useState("green");  // state for author color
-
   return (
-    <Quote>
-      <QuoteCard>
-        Education is the most powerful weapon that you can use to change the world.
-      </QuoteCard>
-      <QuotesAuthor color={color}>- Nelson Mandela</QuotesAuthor>
-    </Quote>
+    <div className="container mt-5">
+      <h1>Hello World</h1>
+      <Button variant="warning">Click Me!</Button>
+      <Alert variant="success" className="mt-3">
+        This is a success alert — check it out!
+      </Alert>
+    </div>
   );
 }
 
