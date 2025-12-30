@@ -1,17 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap CSS
-import Button from 'react-bootstrap/Button';
-import Alert from 'react-bootstrap/Alert'; // Correct import
-
-function App() {
+function App(){
   return (
-    <div className="container mt-5">
-      <h1>Hello World</h1>
-      <Button variant="warning">Click Me!</Button>
-      <Alert variant="success" className="mt-3">
-        This is a success alert — check it out!
-      </Alert>
+    <div>
+     <p className="text-lg bg-lime-700 rounded-s-3xl border-8 border-rose-500">hey i, love you</p>
     </div>
   );
 }
-
 export default App;
+
