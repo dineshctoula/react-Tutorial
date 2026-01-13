@@ -1,17 +1,18 @@
-import { Button } from "@mui/material";
-import { Alert } from "@mui/material";
-function App(){
+// import React, { Fragment } from "react";
+
+import TableRow from "./TableRow";
+
+function App() {
   return (
-    <div>
-     <h1> MUI</h1>
-     <Button variant= "contained" color="success">Dinesh Decodes</Button>
+    <table>
+      <tbody>
+        <tr>
+          <TableRow />
 
-
-     <Alert severity="success">
-  Here is a gentle confirmation that your action was successful.
-</Alert>
-    </div>
+        </tr>
+      </tbody>
+    </table>
   );
 }
-export default App;
 
+export default App;
