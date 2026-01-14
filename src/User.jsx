@@ -1,7 +1,10 @@
-function User({key,item}){
-  return (
+function User({channelName,name}){
+  
+ 
+
+  return(
     <div>
-     <li key={key}> {item}</li>
+      <button onClick={()=>channelName(name)}>Subscribe</button>
     </div>
   );
 }
