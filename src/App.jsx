@@ -1,14 +1,21 @@
+import { useRef } from "react";
 import User from "./User";
+
 function App(){
-   const channelName=(name)=>{
-    alert(name);
-  };
-  return (
+  const inputRef=useRef();
+  const handleFocus=()=>{
+    inputRef.current.focus();
+    inputRef.current.style.backgroundColor="green";
+    inputRef.current.value="hey";
+    }
+  return(
     <div>
-      <User channelName={channelName} name="dinesh" />
-       <User channelName={channelName} name="pawan"/>
-        <User channelName={channelName}  name="dipak"/>
-         <User channelName={channelName} name="Nira" />
+<h1>Forward Ref in React19</h1>
+<User />
+<br />
+<br />
+<button onClick={handleFocus}>Focus Input </button>
+
     </div>
   );
 }

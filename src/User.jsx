@@ -1,10 +1,7 @@
-function User({channelName,name}){
-  
- 
-
+const User= (props)=>{
   return(
     <div>
-      <button onClick={()=>channelName(name)}>Subscribe</button>
+      <input type="text" ref={props.ref} />
     </div>
   );
 }
