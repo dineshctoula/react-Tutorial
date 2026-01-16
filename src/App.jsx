@@ -1,22 +1,26 @@
-import { useRef } from "react";
-import User from "./User";
+export default function App() {
+  async function handleSubmit(formData) {
+    "use server";
+    await new Promise((r) => setTimeout(r, 2000));
+    console.log("Form submitted");
+  }
 
-function App(){
-  const inputRef=useRef();
-  const handleFocus=()=>{
-    inputRef.current.focus();
-    inputRef.current.style.backgroundColor="green";
-    inputRef.current.value="hey";
-    }
-  return(
+  return (
     <div>
-<h1>Forward Ref in React19</h1>
-<User />
-<br />
-<br />
-<button onClick={handleFocus}>Focus Input </button>
+      <h1>UseFormStatus Hook in React 19</h1>
 
+      <form action={handleSubmit}>
+        <input type="text" name="username" placeholder="Username" required />
+        <br /><br />
+
+        <input type="email" name="email" placeholder="Email" required />
+        <br /><br />
+
+        <input type="password" name="password" placeholder="Password" required />
+        <br /><br />
+
+        <SubmitBtn />
+      </form>
     </div>
   );
 }
-export default App;
