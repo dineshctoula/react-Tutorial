@@ -1,29 +1,19 @@
-import { useState, useTransition } from "react";
+import { useState } from "react";
+import Child from "./Child";
 
-function App() {
-  const [text, setText] = useState("Click Me");
-  const [pending, startTransition] = useTransition();
-
-  const handleClick = () => {
-    // urgent update
-    setText("Processing...");
-
-    // non-urgent update
-    startTransition(() => {
-      setTimeout(() => {
-        setText("Done!");
-      }, 2000);
-    });
-  };
-
-  return (
+function App(){
+  const[count, setCount]=useState(0);
+  return(
     <div>
-      <h2>useTransition Demo</h2>
-      <button disabled={pending} onClick={handleClick}>
-        {pending ? "Loading..." : text}
-      </button>
+<h1> Dinesh Decodes | React.memo</h1>
+<Child  name="Pawan"/>
+<h2>Count: {count}</h2>
+<button onClick={()=>setCount(count+1)}>Increment</button>
+
+<button onClick={()=>setCount(count-1)}>Decrement</button>
+
     </div>
   );
-}
 
+}
 export default App;
