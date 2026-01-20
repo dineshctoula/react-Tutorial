@@ -1,22 +1,14 @@
-import { useState } from "react";
-import ChildA from "./ChildA";
-import ChildB from "./ChildB";
+import DerivedState from "./DerivedState";
 
-function App() {
-  const [msg, setMsg] = useState("");
-
-
-  // setMsg is passed to the ChildA
-  // and msg is passed to the ChildB 
-  // state lifting bhaneko chae euta child ko data change huda arko ma ne change hunxa
-
-  return (
+function App()
+{
+  return(
     <div>
-      <h1>State lifting in React</h1>
-      <ChildA setMsg={setMsg} />
-      <ChildB msg={msg} />
+      <DerivedState riceQuantity={4} price={50}/>
+      {/* yelse chae derivestate lai props haru pass garyo  */}
     </div>
-  );
-}
 
+  );
+
+}
 export default App;
