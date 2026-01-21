@@ -1,14 +1,15 @@
-import DerivedState from "./DerivedState";
+import Parent from "./components/Parent";
+import { UserProvider } from "./UserContext";
 
-function App()
-{
+function App(){
   return(
-    <div>
-      <DerivedState riceQuantity={4} price={50}/>
-      {/* yelse chae derivestate lai props haru pass garyo  */}
+    <div style={{backgroundColor:"green", padding:"20px"}}>
+<h1> APP component</h1>
+<UserProvider>
+  <Parent />
+</UserProvider>
+
     </div>
-
   );
-
 }
 export default App;
