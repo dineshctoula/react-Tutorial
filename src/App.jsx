@@ -1,43 +1,25 @@
-import { useActionState } from "react";
+import { useId } from "react";
 
-function submitFeedback(prevState, formData) {
-  const name = formData.get("name");
-  const feedback = formData.get("feedback");
+function App(){
+  const nameId=useId();
+  const emailId=useId();
+  return(
+<div>
+  <h1> UseId Hook in ReactJs</h1>
+  <h1>{nameId}</h1>
+  <h2>{emailId}</h2>
+  <form >
+    <label htmlFor={nameId}>Name:</label>
+    <input type="text" id={nameId} name="name"/>
+    <br />
+    <br />
 
-  if (name && feedback) {
-    return `Thank you ${name} for your feedback`;
-  } else {
-    return "Please enter both name and feedback";
-  }
-}
+     <label htmlFor={emailId}>Email:</label>
+    <input type="email" id={emailId} name="email"/>
 
-export default function App() {
-  const [message, formAction, pending] = useActionState(submitFeedback, "");
 
-  return (
-    <>
-      <h1>useActionState Hook in ReactJS</h1>
-
-      <form action={formAction}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Your Name"
-        />
-        <br /><br />
-
-        <textarea
-          name="feedback"
-          placeholder="Enter your feedback"
-        />
-        <br /><br />
-
-        <button type="submit" disabled={pending}>
-          {pending ? "Submitting..." : "Submit"}
-        </button>
-
-        <p>{message}</p>
-      </form>
-    </>
+  </form>
+</div>
   );
 }
+export default App;
