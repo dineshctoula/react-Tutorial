@@ -1,25 +1,44 @@
-import { useId } from "react";
+import { useState, useOptimistic } from "react";
 
-function App(){
-  const nameId=useId();
-  const emailId=useId();
-  return(
-<div>
-  <h1> UseId Hook in ReactJs</h1>
-  <h1>{nameId}</h1>
-  <h2>{emailId}</h2>
-  <form >
-    <label htmlFor={nameId}>Name:</label>
-    <input type="text" id={nameId} name="name"/>
-    <br />
-    <br />
+function App() {
+  const [todos, setTodos] = useState([]);
 
-     <label htmlFor={emailId}>Email:</label>
-    <input type="email" id={emailId} name="email"/>
+  const [optimisticTodos, addOptimisticTodo] = useOptimistic(
+    todos,
+    (prevTodos, newTodo) => [...prevTodos, newTodo]
+  );
 
+  async function handleAddTodos(formData) {
+    const newTodo = formData.get("task");
 
-  </form>
-</div>
+    if (!newTodo) return;
+
+    // 1️⃣ Optimistic update (UI updates immediately)
+    addOptimisticTodo(newTodo);
+
+    // 2️⃣ Simulate server delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // 3️⃣ Actual state update
+    setTodos((prev) => [...prev, newTodo]);
+  }
+
+  return (
+    <div>
+      <h1>Optimistic UI Update | Dinesh Decodes</h1>
+
+      <form action={handleAddTodos}>
+        <input type="text" name="task" placeholder="Enter a task" />
+        <button type="submit">Add Task</button>
+      </form>
+
+      <ul>
+        {optimisticTodos.map((todo, index) => (
+          <li key={index}>{todo}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
+
 export default App;
