@@ -1,0 +1,283 @@
+#  16. controlled components
+import { useState } from "react";
+
+function App() {
+  const [name, setName]=useState("");
+
+  // name haru chae state variable ho 
+  //  setname chae function jasle value update garxa 
+
+
+  const[email, setEmail]=useState("");
+  const[password, setPassword]=useState("");
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    alert(`Name: ${name}, Email: ${email}, Password: ${password}`);
+
+  }
+  const handleClear =()=>{
+    setName("");
+    setEmail("");
+    setPassword("");
+  }
+
+  return (
+    // controlled component
+    <div>
+      <h1>Controlled component</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" Value={name} onChange={(e)=>setName(e.target.value)} placeholder="enter your name" />
+        <br />
+        <br />
+
+        <input type="email" Value={email}   onChange={(e)=>setEmail(e.target.value)}  placeholder="enter your email" />
+        {/* mathe state variable lekheko ho value ma  */}
+        <br />
+        <br />
+        <input type="password" Value={password}
+         onChange={(e)=>setPassword(e.target.value)} 
+        placeholder="enter your password" />
+        <br />
+        <br />
+        <button type="submit"> Submit</button>
+        <br />
+        <br />
+        <button type="reset"onClick={handleClear}>Clear</button>
+        <p>live value:{name}:{email}:{password}</p>
+      </form>
+    </div>
+  );
+}
+export default App;
+--------------------------------
+
+
+
+
+
+
+import { useRef } from "react";
+
+function App() {
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Reading values from uncontrolled inputs
+    console.log("Name:", nameRef.current.value);
+    console.log("Email:", emailRef.current.value);
+    console.log("Password:", passwordRef.current.value);
+
+    const name=nameRef.current.value;
+    const email=emailRef.current.value;
+    const password=passwordRef.current.value;
+  };
+  const handleReset =()=>{
+    nameRef.current.value="";
+    emailRef.current.value="";
+    passwordRef.current.value=""
+  }
+
+  return (
+    <div className="App">
+      <h1>Dinesh Uncontrolled Components</h1>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          ref={nameRef}
+          placeholder="Enter your name"
+        />
+        <br /><br />
+
+        <input
+          type="email"
+          ref={emailRef}
+          placeholder="Enter your email"
+        />
+        <br /><br />
+
+        <input
+          type="password"
+          ref={passwordRef}
+          placeholder="Enter your password"
+        />
+        <br /><br />
+
+        <button type="submit">Submit</button>
+
+        <br /><br />
+        <button type="reset" onClick={handleReset}>Reset</button>
+      </form>
+    </div>
+  );
+}
+
+export default App;
+
+
+// ref is used for uncontrolled components. It helps Dom to access the elements directly 
+
+
+// const nameRef= ley chae input field ma point garxa 
+
+
+
+// event.preventDefault( ) ley chae page lai refresh huna bata stop garxa 
+
+
+// ref ko through bata chae value access hunxah
+
+---------------------------
+ #19. checkbox in react js
+
+
+ import { useState } from "react";
+
+function App(){
+  const [selected, setSelected] = useState({
+    html:false,
+    css:false,
+    js:false,
+  });
+
+  const htmlChecked = (e) => {
+    setSelected({...selected, html: e.target.checked});
+  };
+
+  const cssChecked = (e) => {
+    setSelected({...selected, css: e.target.checked});
+  };
+
+  const jsChecked = (e) => {
+    setSelected({...selected, js: e.target.checked});
+  };
+
+  return (
+    <div>
+      <h1>Dinesh Checkbox</h1>
+
+      <label>
+        <input
+          type="checkbox"
+          checked={selected.html}
+          onChange={htmlChecked}
+        />
+        HTML
+      </label>
+
+      <br /><br />
+
+      <label>
+        <input
+          type="checkbox"
+          checked={selected.css}
+          onChange={cssChecked}
+        />
+        CSS
+      </label>
+
+      <br /><br />
+
+      <label>
+        <input
+          type="checkbox"
+          checked={selected.js}
+          onChange={jsChecked}
+        />
+        JS
+      </label>
+
+      <br /><br />
+
+      <button onClick={() => setSelected({ html:false, css:false, js:false })}>
+        Clear Selection
+      </button>
+
+      <h2>Selected Skills:</h2>
+
+      <ul>
+        {selected.html && <li>HTML</li>}
+        {selected.css && <li>CSS</li>}
+        {selected.js && <li>JS</li>}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+---------------------------------------------
+#19  Radio Button 
+
+
+import { useState } from "react";
+
+function App() {
+  const [gender, setGender] = useState("male");
+  const[country, setCountry]=useState("India");
+
+  return (
+    <div>
+      <h1>Radio button and select dropdown</h1>
+      <h2>Select Gender</h2>
+
+      <div>
+        <label>
+          <input
+            type="radio"
+            value="male"
+            name="gender"
+            checked={gender === "male"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          Male
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="radio"
+            value="female"
+            name="gender"
+            checked={gender === "female"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          Female
+        </label>
+      </div>
+
+      <div>
+        <label>
+          <input
+            type="radio"
+            value="other"
+            name="gender"
+            checked={gender === "other"}
+            onChange={(e) => setGender(e.target.value)}
+          />
+          Other
+        </label>
+      </div>
+
+      <h3>Selected Gender: {gender}</h3>
+      <div>
+        <h1>Select DropDown Coountry</h1>
+        <select value={country} onChange={(e)=> setCountry(e.target.value)}>
+          <option value="India">India</option>
+          <option value="USA">USA</option>
+          <option value="UK">UK</option>
+          <option value="Canada">Canada</option>
+          <option value="Australia">Australia</option>
+        </select>
+      </div>
+      <h1>Selected Country:{country}</h1>
+    </div>
+  
+  );
+}
+
+export default App;

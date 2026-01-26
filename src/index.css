@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +66,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+=======
+body {
+  font-family: Arial, sans-serif;
+>>>>>>> bd794e8a53987bb5f4d088c4b9fe94037b92d8be
 }
